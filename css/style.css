@@ -188,10 +188,10 @@ input {
 
 .alert-content-container {
   padding: 1rem;
-  background-color: white;
   border-radius: 5px;
   font-size: 1rem;
-  background-color: aqua;
+  background-color: var(--primary-green);
+  color: white;
   box-shadow: -3px 4px 33px -5px rgba(0,0,0,0.57);
   -webkit-box-shadow: -3px 4px 33px -5px rgba(0,0,0,0.57);
   -moz-box-shadow: -3px 4px 33px -5px rgba(0,0,0,0.57);
