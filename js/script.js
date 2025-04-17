@@ -1,6 +1,37 @@
 // global var
 var formData; 
-console.log('Data Form:', formData);
+
+// autoslide
+document.addEventListener('DOMContentLoaded', () => {
+  const slide = document.querySelector('.slide');
+  const slides = Array.from(slide.children);
+  const slideCount = slides.length;
+
+  // Clone konten untuk efek infinite
+  slides.forEach(item => {
+    slide.appendChild(item.cloneNode(true));
+  });
+
+  // Hitung lebar "setengah" konten (original)
+  const halfWidth = slide.scrollWidth / 2;
+
+  let pos = 0;
+  const speed = 1;
+
+  function loop() {
+    // geser ke kiri
+    pos += speed;
+    // ketika sudah geser sejauh halfWidth, reset ke 0
+    if (pos >= halfWidth) {
+      pos = 0;
+    }
+    slide.style.transform = `translateX(-${pos}px)`;
+    requestAnimationFrame(loop);
+  }
+
+  requestAnimationFrame(loop);
+});
+
 // alert
 const alert = document.querySelector('#alert');
 const alertContainer = document.querySelector('.alert-container');
@@ -44,6 +75,7 @@ const handleSubmitForm = (e) => {
     message
   };
 
+  console.log('Data Form:', formData);
   form.reset();
 }
 
