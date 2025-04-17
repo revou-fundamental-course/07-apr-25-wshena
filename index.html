@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-
+  <title>GoTo</title>  
+  <meta name="description" content="Kami adalah perusahaan teknologi nomor 1 di Indonesia. GoTo berdedikasi untuk menciptakan dampak sosial berskala besar di manapun kami beroperasi.">
+  
   <!-- goole font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +19,7 @@
   <header>
     <nav class="container nav-container">
       <a href="/" class="logo">
-        <h1>logo</h1>
+        <h1>GoTo</h1>
       </a>
       <ul class="nav-links">
         <li class="nav-link"> <a class="link" href="/">home</a> </li>
@@ -53,9 +54,50 @@
     </nav>
   </header>
   <!-- header -->
+  
+  <!-- name input overlay -->
+  <div class="name-input-overlay">
+    <div class="name-input-form">
+      <form action="" id="username-form" class="username-form">
+        <input type="text" name="user-name" id="user-name" placeholder="Enter your name" autocomplete="off" class="name-input">
+        
+        <button type="submit" class="button">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M23.0677 11.9929L18.818 7.75739L17.4061 9.17398L19.2415 11.0032L0.932469 11.0012L0.932251 13.0012L19.2369 13.0032L17.4155 14.8308L18.8321 16.2426L23.0677 11.9929Z"
+              fill="currentColor"
+            />
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+  <!-- name input overlay -->
 
   <!-- main -->
   <main>
+
+    <!-- home -->
+    <section id="home">
+      <div class="video-container">
+        <video width="100%" src="assets/gojek-banner.webm" autoplay="true" muted loop="true" type="video/webm" poster="" class="banner-video"></video>
+      </div>
+      <div class="home-content">
+        <div class="container">
+          <div class="content-container">
+            <h1>Hello, <span id="user-name-display"></span> </h1>
+            <h2>Welcome to our company</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- home -->
     <!-- profile -->
     <section id="profile">
       <div class="black-layer">
@@ -274,7 +316,7 @@
   <!-- mobile nav -->
   <div id="mobile-nav" class="mobile-nav">
     <div class="nav-container">
-      <h1>logo</h1>
+      <h1>GoTo</h1>
       <button id="toggle-menu-close" class="nav-toggle">
         <svg
           width="25"
@@ -298,10 +340,10 @@
     </div>
     <nav>
       <ul class="mobile-nav-links">
-        <li class="nav-link"> <a class="link" href="http://">home</a> </li>
-        <li class="nav-link"> <a class="link" href="http://">our profile</a> </li>
-        <li class="nav-link"> <a class="link" href="http://">portofolio</a> </li>
-        <li class="nav-link"> <a class="link" href="http://">message us</a> </li>
+        <li id="mobile-nav-link" class="nav-link"> <a class="link" href="/">home</a> </li>
+        <li id="mobile-nav-link" class="nav-link"> <a class="link" href="#profile">our profile</a> </li>
+        <li id="mobile-nav-link" class="nav-link"> <a class="link" href="#portofolio">portofolio</a> </li>
+        <li id="mobile-nav-link" class="nav-link"> <a class="link" href="#contact-form">message us</a> </li>
       </ul>
     </nav>
   </div>

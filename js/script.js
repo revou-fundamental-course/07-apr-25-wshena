@@ -1,36 +1,38 @@
 // global var
-var formData; 
+let formData;
+let username;
 
-// autoslide
-document.addEventListener('DOMContentLoaded', () => {
-  const slide = document.querySelector('.slide');
-  const slides = Array.from(slide.children);
-  const slideCount = slides.length;
+// username display
+const usernameDisplay = document.querySelector('#user-name-display');
+console.log(usernameDisplay)
+// name input
+const usernameForm    = document.querySelector('#username-form');
+const userNameInput   = document.querySelector('.name-input');
+const nameOverlay     = document.querySelector('.name-input-overlay');
 
-  // Clone konten untuk efek infinite
-  slides.forEach(item => {
-    slide.appendChild(item.cloneNode(true));
-  });
+usernameForm.addEventListener('submit', (e) => {
+  e.preventDefault();
 
-  // Hitung lebar "setengah" konten (original)
-  const halfWidth = slide.scrollWidth / 2;
+  username = userNameInput.value.trim();
 
-  let pos = 0;
-  const speed = 1;
-
-  function loop() {
-    // geser ke kiri
-    pos += speed;
-    // ketika sudah geser sejauh halfWidth, reset ke 0
-    if (pos >= halfWidth) {
-      pos = 0;
-    }
-    slide.style.transform = `translateX(-${pos}px)`;
-    requestAnimationFrame(loop);
+  if (username === '') {
+    return;
   }
 
-  requestAnimationFrame(loop);
+  usernameDisplay.textContent = username;
+
+  setBodyScrollLock(false);
+  nameOverlay.classList.add('hide');
+
+  console.log('Username:', username);
 });
+
+// fungsi untuk toggle scroll lock
+function setBodyScrollLock(lock) {
+  document.body.style.overflow = lock ? 'hidden' : '';
+}
+
+setBodyScrollLock(true);
 
 // alert
 const alert = document.querySelector('#alert');
@@ -76,28 +78,63 @@ const handleSubmitForm = (e) => {
   };
 
   console.log('Data Form:', formData);
+  window.alert(JSON.stringify(formData))
   form.reset();
 }
 
 // mobile nav menu
-const mobileNav = document.querySelector('#mobile-nav')
+const mobileNav = document.querySelector('#mobile-nav');
 const mobileNavOpenButton = document.querySelector('#toggle-menu-open');
 const mobileNavCloseButton = document.querySelector('#toggle-menu-close');
+const mobileLinks = document.querySelectorAll('#mobile-nav-link'); // atau querySelectorAll kalau banyak
 
-// mobile nav function
-const toggleOpenMobileNav = () => {
-  mobileNavOpenButton.addEventListener('click', () => {
-    mobileNav.classList.add('mobile-nav-active');
-  })
+// buka nav
+mobileNavOpenButton.addEventListener('click', () => {
+  mobileNav.classList.add('mobile-nav-active');
+});
+
+// fungsi close nav
+const closeMobileNav = () => {
+  mobileNav.classList.remove('mobile-nav-active');
 };
 
-const toggleCloseMobileNav = () => {
-  mobileNavCloseButton.addEventListener('click', () => {
-    mobileNav.classList.remove('mobile-nav-active');
-  })
-};
+// close via tombol “X”
+mobileNavCloseButton.addEventListener('click', closeMobileNav);
 
-// function run
-toggleOpenMobileNav();
-toggleCloseMobileNav();
+// close via link
+mobileLinks.forEach(link => {
+  link.addEventListener('click', closeMobileNav);
+});
+
 form.addEventListener('submit', handleSubmitForm);
+
+// autoslide
+document.addEventListener('DOMContentLoaded', () => {
+  const slide = document.querySelector('.slide');
+  const slides = Array.from(slide.children);
+  const slideCount = slides.length;
+
+  // Clone konten untuk efek infinite
+  slides.forEach(item => {
+    slide.appendChild(item.cloneNode(true));
+  });
+
+  // Hitung lebar "setengah" konten (original)
+  const halfWidth = slide.scrollWidth / 2;
+
+  let pos = 0;
+  const speed = 1;
+
+  function loop() {
+    // geser ke kiri
+    pos += speed;
+    // ketika sudah geser sejauh halfWidth, reset ke 0
+    if (pos >= halfWidth) {
+      pos = 0;
+    }
+    slide.style.transform = `translateX(-${pos}px)`;
+    requestAnimationFrame(loop);
+  }
+
+  requestAnimationFrame(loop);
+});
